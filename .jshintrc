@@ -1,0 +1,45 @@
+{
+    "node": true,
+    "undef": true,
+    "eqnull": true,
+    "expr": true,
+    "sub": true,
+    "laxcomma": true,
+    "esnext": false,
+
+    "globals": {
+        "jQuery": true,
+        "$": true,
+        "console": true,
+        "window": true,
+        "document": true,
+
+        "Ember": true,
+        "Em": true,
+
+        "GD": true,
+        "App": true,
+        "AIT": true,
+
+        "sinon": true,
+
+        "require": true,
+        "define": true,
+
+        "__dirname": true,
+        "GoodStrap": true,
+
+        "global": true,
+        "process": true,
+        "module": true,
+
+        "jasmine": true,
+        "describe": true,
+        "it": true,
+        "beforeEach": true,
+        "afterEach": true,
+        "after": true,
+        "expect": true,
+        "spyOn": true
+    }
+}
