@@ -43,6 +43,8 @@ to your gruntfile.
 - `root` root directory, relative to project root.
 	Default is `html`.
 
+- `dir` alias of `root`
+
 - `cert` path to certificate to use. Defaults to `<grunt-grizzly>/cert/server.crt`.
 	You will hardly ever need to change this value.
 

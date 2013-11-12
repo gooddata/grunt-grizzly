@@ -36,7 +36,11 @@ module.exports = function(grunt) {
         };
 
         // Grunt configuration created via grunt.initConfig
-        var configOptions = grunt.config('grizzly');
+        var configOptions = grunt.config('grizzly.options') || {};
+
+        // Check aliases
+        configOptions.host = configOptions.host || configOptions.backend;
+        configOptions.root = configOptions.root || configOptions.dir;
 
         // Create options object
         // CLI options have higher priority over grunt configuration options
