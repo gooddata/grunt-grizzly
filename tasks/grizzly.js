@@ -16,7 +16,7 @@ module.exports = function(grunt) {
         // Default configuration options
         var defaults = {
             root: 'html',
-            host: 'staging.getgooddata.com',
+            host: 'secure.getgooddata.com',
             port: 8443,
             cert: __dirname + '/../cert/server.crt',
             key: __dirname + '/../cert/server.key',
