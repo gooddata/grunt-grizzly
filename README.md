@@ -33,7 +33,7 @@ to your gruntfile.
 `grizzly` task provides following configuration options:
 
 - `backend` host name of proxy endpoint, e.g. `secure.getgooddata.com`. 
-	Defaults to `staging.getgooddata.com`.
+	Defaults to `secure.getgooddata.com`.
 
 - `host` alias of `backend`
 
@@ -42,6 +42,8 @@ to your gruntfile.
 
 - `root` root directory, relative to project root.
 	Default is `html`.
+
+- `dir` alias of `root`
 
 - `cert` path to certificate to use. Defaults to `<grunt-grizzly>/cert/server.crt`.
 	You will hardly ever need to change this value.
