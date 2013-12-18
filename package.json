@@ -15,13 +15,19 @@
   "scripts": {
     "test": "grunt test"
   },
-  "main": "Gruntfile.js",
+  "bin": {
+    "grizzly": "./bin/grizzly.js"
+  },
+  "main": "lib/grizzly.js",
   "engines": {
     "node": ">= 0.8.0"
   },
   "dependencies": {
     "http-proxy": "~0.10.3",
-    "express": "3.x"
+    "optimist": ">=0.6",
+    "express": "3.x",
+    "lodash": ">=2.4",
+    "colors": "0.6.x"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
