@@ -19,7 +19,8 @@ module.exports = function(grunt) {
             cert: grunt.option('cert'),
             key: grunt.option('key'),
             keepAlive: this.flags.keepAlive,
-            quiet: this.flags.quiet
+            quiet: this.flags.quiet,
+            switchPortIfUsed: false
         };
 
         // Grunt configuration created via grunt.initConfig
@@ -38,10 +39,17 @@ module.exports = function(grunt) {
 
         // Shutdown & notify on error
         grizzly.on('error', function(error) {
-            console.error('Grizzly error: %s', error);
-            console.error('Stopping task grizzly');
+            if (error.errno === 'EADDRINUSE' && options.switchPortIfUsed) {
+                options.port++;
+                grizzly.start();
 
-            done();
+                console.warn('Switching grizzly port to %d'.red, options.port);
+            } else {
+                console.error('Grizzly error: %s', error);
+                console.error('Stopping task grizzly');
+
+                done();
+            }
         });
 
         grizzly.on('start', function() {
