@@ -72,6 +72,9 @@ to your gruntfile.
 - `quiet` This is **not** an option, it is a **flag!!!**
 	If set, grizzly will not produce any output (i.e. will not log anything to console).
 
+- `switchPortIfUsed` If set to true, grizzly will increment the port number and retry if specified port
+	is already in use.
+
 ## Pitfalls
 
 `grizzly` inspects body of requests for `/gdc/app/account/bootstrap`
