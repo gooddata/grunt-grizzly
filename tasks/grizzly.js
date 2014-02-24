@@ -38,10 +38,10 @@ module.exports = function(grunt) {
 
         // Shutdown & notify on error
         grizzly.on('error', function(error) {
-            console.error('Grizzly error: %s', error);
-            console.error('Stopping task grizzly');
+            grunt.log.error('Grizzly error: %s', error);
+            grunt.log.error('Stopping task grizzly');
 
-            done();
+            throw error;
         });
 
         grizzly.on('start', function() {
@@ -52,8 +52,8 @@ module.exports = function(grunt) {
         });
 
         grizzly.on('close', function() {
-            console.error('Grizzly server closed');
-            console.error('Stopping task grizzly');
+            grunt.log.error('Grizzly server closed');
+            grunt.log.error('Stopping task grizzly');
 
             done();
         });
