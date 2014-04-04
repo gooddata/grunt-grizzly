@@ -1,5 +1,4 @@
-// Copyright (C) 2007-2012, GoodData(R) Corporation. All rights reserved.
-
+// Copyright (C) 2007-2014, GoodData(R) Corporation.
 var fs = require('fs');
 var Grizzly = require('../lib/grizzly');
 var _ = require('lodash');

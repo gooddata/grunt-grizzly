@@ -1,5 +1,4 @@
-// Copyright (C) 2007-2012, GoodData(R) Corporation. All rights reserved.
-
+// Copyright (C) 2007-2014, GoodData(R) Corporation.
 describe('requst_proxy', function() {
     var requestProxy = require('../../../lib/middleware/request_proxy');
 
