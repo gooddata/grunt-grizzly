@@ -1,5 +1,4 @@
-// Copyright (C) 2007-2012, GoodData(R) Corporation. All rights reserved.
-
+// Copyright (C) 2007-2014, GoodData(R) Corporation.
 describe('host_detector', function() {
     var hostDetector = require('../../../lib/middleware/host_detector');
     var mockRequest = function() {

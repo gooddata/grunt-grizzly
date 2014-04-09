@@ -1,3 +1,4 @@
+// Copyright (C) 2007-2014, GoodData(R) Corporation.
 'use strict';
 
 var fs = require('fs');

@@ -1,3 +1,4 @@
+// Copyright © 2014, GoodData Corporation
 #!/usr/bin/env node
 
 var path = require('path'),

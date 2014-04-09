@@ -1,4 +1,4 @@
-// Copyright (C) 2007-2013, GoodData(R) Corporation. All rights reserved.
+// Copyright (C) 2007-2014, GoodData(R) Corporation.
 
 var path = require('path');
 
