@@ -1,5 +1,5 @@
-// Copyright © 2014, GoodData Corporation
 #!/usr/bin/env node
+// Copyright © 2014, GoodData Corporation
 
 var path = require('path'),
     fs = require('fs'),
