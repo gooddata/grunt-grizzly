@@ -32,8 +32,8 @@ to your gruntfile.
 
 `grizzly` task provides following configuration options:
 
-- `backend` host name of proxy endpoint, e.g. `secure.getgooddata.com`. 
-	Defaults to `secure.getgooddata.com`.
+- `backend` host name of proxy endpoint
+	Defaults to `secure.gooddata.com`.
 
 - `host` alias of `backend`
 
@@ -41,7 +41,7 @@ to your gruntfile.
 	Defaults to `8443`
 
 - `root` root directory, relative to project root.
-	Default is `html`.
+	Default is `base`.
 
 - `dir` alias of `root`
 
@@ -60,15 +60,15 @@ to your gruntfile.
 	when starting standalone grizzly with no grunt tasks after `grizzly` task.
 	If not specified, grunt will execute next task normally.
 
-- `stub` function or path to file that exports a function, i.e.
-		
+- `stub` express instance setup function/module that is called with an instance
+    of `express` app before setting up the static root directory handler.
+
+   Form: function or path to file that exports a function, i.e.
+
 		module.exports = function(app) {
 			// do something with app here
 		}
 	
-	This function will be called with one argument - `app`,
-	an instance of `express` before calling `app.use` and/or before routing.
-
 - `quiet` This is **not** an option, it is a **flag!!!**
 	If set, grizzly will not produce any output (i.e. will not log anything to console).
 
