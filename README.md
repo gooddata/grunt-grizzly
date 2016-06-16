@@ -25,7 +25,7 @@ This module registers `grizzly` grunt task, so you can add
 
 	grunt.task.loadNpmTasks('grunt-grizzly');
 	grunt.task.run('grizzly');
-	
+
 to your gruntfile.
 
 ## Configuration
@@ -37,7 +37,7 @@ to your gruntfile.
 
 - `host` alias of `backend`
 
-- `port` number of local port to listen to. 
+- `port` number of local port to listen to.
 	Defaults to `8443`
 
 - `root` root directory, relative to project root.
@@ -51,11 +51,11 @@ to your gruntfile.
 - `key` path to ssl key to use. Defaults to `<grunt-grizzly>/cert/server.key`.
 	You will hardly ever need to change this value.
 
-- `keepAlive` This is **not** an option, it is a **flag!!!** 
+- `keepAlive` This is **not** an option, it is a **flag!!!**
 	If set, e.g. by calling
 
 		grunt.task.run('grizzly:keepAlive');
-		
+
 	then grizzly will not exit after the server has been started. This is useful
 	when starting standalone grizzly with no grunt tasks after `grizzly` task.
 	If not specified, grunt will execute next task normally.
@@ -68,7 +68,7 @@ to your gruntfile.
 		module.exports = function(app) {
 			// do something with app here
 		}
-	
+
 - `quiet` This is **not** an option, it is a **flag!!!**
 	If set, grizzly will not produce any output (i.e. will not log anything to console).
 
@@ -82,6 +82,4 @@ that client treats this response as if the token has expired and retries the req
 ## Testing
 
 There are no integration tests so far. Unit tests are stored under `test/unit/cases`
-and can be run with `grunt test`. Jasmine is used to
-	
-
+and can be run with `grunt test`. Jasmine is used.
