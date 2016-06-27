@@ -1,7 +1,7 @@
 {
   "name": "grunt-grizzly",
   "description": "Simple GoodData proxy server for client development.",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "homepage": "https://github.com/gooddata/grunt-grizzly",
   "author": {
     "name": "Ján Jakub Naništa",
