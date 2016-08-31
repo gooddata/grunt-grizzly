@@ -15,7 +15,17 @@ module.exports = function(grunt) {
             options: {
                 jshintrc: true
             }
-        }
+        },
+        jasmine_node: {
+            options: {
+                forceExit: true,
+                match: '.',
+                matchall: false,
+                extensions: 'js',
+                specNameMatcher: 'spec'
+            },
+            all: ['test/']
+        },
     });
 
     // Default task.

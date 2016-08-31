@@ -6,7 +6,7 @@ describe('requst_proxy', function() {
         this.host = 'some.host.address';
         this.object = requestProxy(this.host);
 
-        spyOn(this.object.proxy, 'proxyRequest');
+        spyOn(this.object.proxy, 'web');
     });
 
     it('should have `setHost` method', function() {
@@ -18,7 +18,7 @@ describe('requst_proxy', function() {
         this.object.setHost(anotherHost);
         this.object({method: 'GET', headers: {}}, {});
 
-        expect(this.object.proxy.proxyRequest.calls[0].args[2].host).toBe(anotherHost);
+        expect(this.object.proxy.web.calls[0].args[2].target).toMatch(new RegExp(anotherHost));
     });
 
     it('should set host header', function() {
@@ -52,6 +52,6 @@ describe('requst_proxy', function() {
         this.object.setHost('some.host.com');
         this.object({method: 'GET', headers: {}}, {});
 
-        expect(this.object.proxy.proxyRequest.calls[0].args[2].host).toBe('some.host.com');
+        expect(this.object.proxy.web.calls[0].args[2].target).toMatch(new RegExp('some.host.com'));
     });
 });
