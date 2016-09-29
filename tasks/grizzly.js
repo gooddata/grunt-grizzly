@@ -1,7 +1,7 @@
 // Copyright (C) 2007-2014, GoodData(R) Corporation.
 var fs = require('fs');
 var Grizzly = require('../lib/grizzly');
-var _ = require('lodash');
+var defaults = require('lodash.defaults');
 
 /**
  * grunt-grizzly
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
 
         // Create options object
         // CLI options have higher priority over grunt configuration options
-        var options = _.defaults(cliOptions, configOptions);
+        var options = defaults(cliOptions, configOptions);
 
         var done = this.async();
         var grizzly = new Grizzly(options);
