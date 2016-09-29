@@ -33,7 +33,7 @@ to your gruntfile.
 `grizzly` task provides following configuration options:
 
 - `backend` host name of proxy endpoint
-	Defaults to `secure.gooddata.com`.
+	Defaults to `client-demo-be.na.intgdc.com`.
 
 - `host` alias of `backend`
 
