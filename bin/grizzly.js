@@ -20,7 +20,7 @@ var argv = optimist
     })
     .options('b', {
         alias: 'backend',
-        'default': 'secure.gooddata.com',
+        'default': 'client-demo-be.na.intgdc.com',
         describe: 'backend host name'
     })
     .options('d', {
