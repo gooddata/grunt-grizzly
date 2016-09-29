@@ -25,7 +25,7 @@ module.exports = function(grunt) {
                 specNameMatcher: 'spec'
             },
             all: ['test/']
-        },
+        }
     });
 
     // Default task.
