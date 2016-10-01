@@ -1,7 +1,7 @@
 {
   "name": "grunt-grizzly",
   "description": "Simple GoodData proxy server for client development.",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "homepage": "https://github.com/gooddata/grunt-grizzly",
   "author": {
     "name": "Ján Jakub Naništa",
@@ -23,8 +23,8 @@
     "node": ">= 0.8.0"
   },
   "dependencies": {
+    "chalk": "1.1.3",
     "cli-table2": "0.2.0",
-    "colors": "1.1.2",
     "express": "4.14.0",
     "http-proxy": "1.15.1",
     "lodash.defaults": "4.2.0",
