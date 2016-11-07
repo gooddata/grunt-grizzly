@@ -27,6 +27,18 @@ var argv = optimist
         alias: 'document-root',
         describe: 'document root directory to use'
     })
+    .options('s', {
+        alias: 'stub',
+        describe: 'stub file or function'
+    })
+    .options('c', {
+        alias: 'cert',
+        describe: 'path cert file'
+    })
+    .options('k', {
+        alias: 'key',
+        describe: 'path to key file'
+    })
     .argv;
 
 // Show usage help
@@ -38,7 +50,9 @@ if (argv.h) {
 var port = argv.p,
     rootDir = argv.d,
     backendHost = argv.b,
-    stubFilePath;
+    stub = argv.s,
+    cert = argv.c,
+    key = argv.k;
 
 var documentRoot = argv.d;
 
@@ -52,10 +66,28 @@ if (!fs.existsSync(documentRoot)) {
     process.exit(1);
 }
 
+if (stub && !fs.existsSync(stub)) {
+    console.error('Error: Stub file does not exist. Tried: ' + stub);
+    process.exit(1);
+}
+
+if (cert && !fs.existsSync(cert)) {
+    console.error('Error: Cert file does not exist. Tried: ' + cert);
+    process.exit(1);
+}
+
+if (key && !fs.existsSync(key)) {
+    console.error('Error: Key file does not exist. Tried: ' + key);
+    process.exit(1);
+}
+
 var options = {
     host: backendHost,
     port: port,
-    root: documentRoot
+    root: documentRoot,
+    stub: stub,
+    cert: cert,
+    key: key
 };
 var grizzly = new Grizzly(options);
 
