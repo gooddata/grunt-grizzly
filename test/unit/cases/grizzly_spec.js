@@ -25,6 +25,14 @@ describe('grizzly', function() {
         }).toThrow();
     });
 
+    it('should throw an exception if stubs file does not exist', function() {
+        expect(function() {
+            var grizzly = new Grizzly({
+                stub: '/does/not/exist'
+            });
+        }).toThrow();
+    });
+
     describe('after created', function() {
         beforeEach(function() {
             this.options = {
@@ -83,6 +91,32 @@ describe('grizzly', function() {
 
             // Stop server
             this.https.emit('close');
+        });
+    });
+
+    describe('stubs', function() {
+        beforeEach(function() {
+            this.options = {
+                key: __dirname + '/../../../cert/server.key',
+                cert: __dirname + '/../../../cert/server.crt',
+                port: 27001,
+                root: '.',
+                stub: function () {}
+            };
+
+            spyOn(this.options, 'stub');
+
+            this.https = https.createServer({
+                cert: fs.readFileSync(this.options.cert),
+                key: fs.readFileSync(this.options.key)
+            });
+            this.grizzly = new Grizzly(this.options);
+        });
+
+        it('should use stubs when provided', function() {
+            this.grizzly.start();
+            expect(this.options.stub).toHaveBeenCalled();
+            this.grizzly.stop();
         });
     });
 });
