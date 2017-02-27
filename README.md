@@ -72,13 +72,6 @@ to your gruntfile.
 - `quiet` This is **not** an option, it is a **flag!!!**
 	If set, grizzly will not produce any output (i.e. will not log anything to console).
 
-## Pitfalls
-
-`grizzly` inspects body of requests for `/gdc/app/account/bootstrap`
-to be able to switch to proper backend. If a redirect to different backend is needed,
-`grizzly` sends a `401 Not Authorized` request to client and relies on the fact
-that client treats this response as if the token has expired and retries the request.
-
 ## Testing
 
 There are no integration tests so far. Unit tests are stored under `test/unit/cases`
