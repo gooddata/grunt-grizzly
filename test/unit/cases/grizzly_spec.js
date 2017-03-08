@@ -9,6 +9,7 @@ describe('grizzly', function() {
 
     it('should throw an exception if ssl cert file does not exist', function() {
         expect(function() {
+            // eslint-disable-next-line no-unused-vars
             var grizzly = new Grizzly({
                 cert: '/does/not/exist',
                 key: __dirname + '/../../../cert/server.key'
@@ -18,6 +19,7 @@ describe('grizzly', function() {
 
     it('should throw an exception if ssl key file does not exist', function() {
         expect(function() {
+            // eslint-disable-next-line no-unused-vars
             var grizzly = new Grizzly({
                 cert: __dirname + '/../../../cert/server.crt',
                 key: '/does/not/exist'
@@ -27,6 +29,7 @@ describe('grizzly', function() {
 
     it('should throw an exception if stubs file does not exist', function() {
         expect(function() {
+            // eslint-disable-next-line no-unused-vars
             var grizzly = new Grizzly({
                 stub: '/does/not/exist'
             });

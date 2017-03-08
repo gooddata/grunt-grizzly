@@ -1,19 +1,19 @@
-// Copyright (C) 2007-2014, GoodData(R) Corporation.
-
-var path = require('path');
-
+// Copyright (C) 2007-2017, GoodData(R) Corporation.
 module.exports = function(grunt) {
 
     // Load all required tasks
     grunt.loadTasks('tasks');
     grunt.loadNpmTasks('grunt-jasmine-node');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('gruntify-eslint');
 
     grunt.initConfig({
-        jshint: {
-            all: ['tasks/**/*.js', 'test/**/*.js'],
+        eslint: {
+            all: [
+                './*.js',
+                '{lib,tasks,test}/**/*.js'
+            ],
             options: {
-                jshintrc: true
+                configFile: '.eslintrc'
             }
         },
         jasmine_node: {
@@ -28,10 +28,10 @@ module.exports = function(grunt) {
         }
     });
 
-    // Default task.
+    // Default task
     grunt.registerTask('default', ['grizzly:keepAlive']);
 
-    grunt.registerTask('hint', ['jshint:all']);
+    grunt.registerTask('test', ['jasmine_node']);
 
-    grunt.registerTask('test', ['hint', 'jasmine_node']);
+    grunt.registerTask('validate', ['eslint']);
 };
