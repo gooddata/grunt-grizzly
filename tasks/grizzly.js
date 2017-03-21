@@ -18,7 +18,8 @@ module.exports = function(grunt) {
             cert: grunt.option('cert'),
             key: grunt.option('key'),
             keepAlive: this.flags.keepAlive,
-            quiet: this.flags.quiet
+            quiet: this.flags.quiet,
+            autoassignPort: grunt.option('autoassignPort')
         };
 
         // Grunt configuration created via grunt.initConfig
@@ -37,10 +38,16 @@ module.exports = function(grunt) {
 
         // Shutdown & notify on error
         grizzly.on('error', function(error) {
+          if (error.errno === 'EADDRINUSE' && options.autoassignPort) {
+            options.port++;
+            grunt.log.warn('Switching grizzly port to %d', options.port);
+            grizzly.start();
+
+          } else {
             grunt.log.error('Grizzly error: %s', error);
             grunt.log.error('Stopping task grizzly');
-
-            throw error;
+            done();
+          }
         });
 
         grizzly.on('start', function() {
