@@ -39,6 +39,10 @@ var argv = optimist
         alias: 'key',
         describe: 'path to key file'
     })
+    .options('a', {
+        alias: 'autoassignPort',
+        describe: 'increment port number and if specified port is already in use'
+    })
     .argv;
 
 // Show usage help
@@ -52,7 +56,8 @@ var port = argv.p,
     backendHost = argv.b,
     stub = argv.s,
     cert = argv.c,
-    key = argv.k;
+    key = argv.k,
+    autoassignPort = argv.a;
 
 var documentRoot = argv.d;
 
@@ -87,14 +92,22 @@ var options = {
     root: documentRoot,
     stub: stub,
     cert: cert,
-    key: key
+    key: key,
+    autoassignPort: autoassignPort
 };
 var grizzly = new Grizzly(options);
 
 // Shutdown & notify on error
 grizzly.on('error', function(error) {
+  if (error.errno === 'EADDRINUSE' && options.autoassignPort) {
+    options.port++;
+    console.warn('Switching grizzly port to %d', options.port);
+    grizzly.start();
+
+  } else {
     console.error('Grizzly error: %s', error);
     console.error('Stopping task grizzly');
+  }
 });
 
 grizzly.on('start', function() {
