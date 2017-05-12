@@ -1,7 +1,7 @@
 {
   "name": "grunt-grizzly",
   "description": "Simple GoodData proxy server for client development.",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "license": "SEE LICENSE IN LICENSE.txt",
   "homepage": "https://github.com/gooddata/grunt-grizzly",
   "author": {
