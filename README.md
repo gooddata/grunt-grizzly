@@ -8,10 +8,24 @@ Grizzly
 Simple GoodData proxy server for client development.
 
 ## Usage
+### CLI
+``` 
+$ yarn add grunt-grizzly
+$ yarn grizzly -h
+Usage: grizzly -b [backend] -p [port] -d [document-root]
 
-There are two ways to use this npm module.
+Options:
+  -p, --port            local port to listen on           [default: 8443]
+  -h, --help            show this help
+  -b, --backend         backend host name                 [default: "secure.gooddata.com"]
+  -d, --document-root   document root directory to use
+  -s, --stub            stub file or function
+  -c, --cert            path cert file
+  -k, --key             path to key file
+  -a, --autoassignPort  increment port number and if specified port is already in use
+```
 
-### Direct
+### Direct with grunt
 
 To run grizzly as a standalone server, the only thing you need to do is to run:
 
