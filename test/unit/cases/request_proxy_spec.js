@@ -54,4 +54,19 @@ describe('requst_proxy', function() {
 
         expect(this.object.proxy.web.calls[0].args[2].target).toMatch(new RegExp('some.host.com'));
     });
+
+    it('should send 404 for proxied requests if host not given', function() {
+        var resMock = {
+            status: function() {},
+            send: function() {}
+        };
+        spyOn(resMock, 'status');
+        spyOn(resMock, 'send');
+
+        this.object.setHost(null);
+        this.object({method: 'GET', headers: {}}, resMock);
+
+        expect(this.object.proxy.web).not.toHaveBeenCalled();
+        expect(resMock.status).toHaveBeenCalledWith(404);
+    });
 });
