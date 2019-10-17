@@ -12,6 +12,14 @@
     "type": "git",
     "url": "git@github.com:gooddata/grunt-grizzly.git"
   },
+  "files": [
+    "bin",
+    "cert",
+    "lib",
+    "tasks",
+    "icon.png",
+    "logo.txt"
+  ],
   "scripts": {
     "test": "grunt validate test"
   },
