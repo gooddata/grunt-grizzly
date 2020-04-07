@@ -3,63 +3,62 @@
 
 var path = require('path'),
     fs = require('fs'),
-    optimist = require('optimist'),
-    Grizzly = require('../lib/grizzly');
+    Grizzly = require('../lib/grizzly'),
+    yargs = require('yargs');
 
-// Parse command line parameters
-var argv = optimist
+var argv = yargs
     .usage('Usage: $0 -b [backend] -p [port] -d [document-root]')
-    .options('p', {
-        alias: 'port',
+    .option('port', {
+        alias: 'p',
         'default': 8443,
         describe: 'local port to listen on'
     })
-    .options('h', {
-        alias: 'help',
+    .option('help', {
+        alias: 'h',
         describe: 'show this help'
     })
-    .options('b', {
-        alias: 'backend',
+    .option('backend', {
+        alias: 'b',
         'default': 'secure.gooddata.com',
         describe: 'backend host name'
     })
-    .options('d', {
-        alias: 'document-root',
+    .option('document-root', {
+        alias: 'd',
         describe: 'document root directory to use'
     })
-    .options('s', {
-        alias: 'stub',
+    .option('stub', {
+        alias: 's',
         describe: 'stub file or function'
     })
-    .options('c', {
-        alias: 'cert',
+    .option('cert', {
+        alias: 'c',
         describe: 'path cert file'
     })
-    .options('k', {
-        alias: 'key',
+    .option('key', {
+        alias: 'k',
         describe: 'path to key file'
     })
-    .options('a', {
-        alias: 'autoassignPort',
+    .option('autoassignPort', {
+        alias: 'a',
         describe: 'increment port number and if specified port is already in use'
     })
     .argv;
 
 // Show usage help
-if (argv.h) {
-    optimist.showHelp();
+if (argv.help) {
+    console.log('Usage: $0 -b [backend] -p [port] -d [document-root]');
     process.exit(0);
 }
 
-var port = argv.p,
-    rootDir = argv.d,
-    backendHost = argv.b,
-    stub = argv.s,
-    cert = argv.c,
-    key = argv.k,
-    autoassignPort = argv.a;
+var port = argv.port,
+    rootDir = argv['document-root'],
+    backendHost = argv.backend,
+    stub = argv.stub,
+    cert = argv.cert,
+    key = argv.key,
+    autoassignPort = argv.autoassignPort;
 
-var documentRoot = argv.d;
+var documentRoot = argv['document-root'];
 
 if (!documentRoot || typeof documentRoot === 'boolean') {
     console.error('Error: You must provide document root!');

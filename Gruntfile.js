@@ -4,18 +4,8 @@ module.exports = function(grunt) {
     // Load all required tasks
     grunt.loadTasks('tasks');
     grunt.loadNpmTasks('grunt-jasmine-node');
-    grunt.loadNpmTasks('gruntify-eslint');
 
     grunt.initConfig({
-        eslint: {
-            all: [
-                './*.js',
-                '{lib,tasks,test}/**/*.js'
-            ],
-            options: {
-                configFile: '.eslintrc'
-            }
-        },
         jasmine_node: {
             options: {
                 forceExit: true,
@@ -32,6 +22,4 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['grizzly:keepAlive']);
 
     grunt.registerTask('test', ['jasmine_node']);
-
-    grunt.registerTask('validate', ['eslint']);
 };
