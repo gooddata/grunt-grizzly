@@ -1,4 +1,4 @@
-// Copyright (C) 2007-2014, GoodData(R) Corporation.
+// Copyright (C) 2007-2020, GoodData(R) Corporation.
 'use strict';
 
 var fs = require('fs');
@@ -37,69 +37,71 @@ describe('grizzly', function() {
     });
 
     describe('after created', function() {
+        var context = {};
         beforeEach(function() {
-            this.options = {
+            context.options = {
                 key: __dirname + '/../../../cert/server.key',
                 cert: __dirname + '/../../../cert/server.crt',
                 port: 27000,
                 root: '.'
             };
 
-            this.https = https.createServer({
-                cert: fs.readFileSync(this.options.cert),
-                key: fs.readFileSync(this.options.key)
+            context.https = https.createServer({
+                cert: fs.readFileSync(context.options.cert),
+                key: fs.readFileSync(context.options.key)
             });
-            this.grizzly = new Grizzly(this.options);
+            context.grizzly = new Grizzly(context.options);
 
-            spyOn(this.https, 'listen').andReturn(this.https);
-            spyOn(this.https, 'close').andReturn(this.https);
-            spyOn(this.grizzly, '_createServer').andReturn(this.https);
+            jest.spyOn(context.https, 'listen').mockReturnValue(context.https);
+            jest.spyOn(context.https, 'close').mockReturnValue(context.https);
+            jest.spyOn(context.grizzly, '_createServer').mockReturnValue(context.https);
         });
 
         it('should start server on specified port', function() {
-            this.grizzly.start();
+            context.grizzly.start();
 
-            expect(this.https.listen.callCount).toBe(1);
-            expect(this.https.listen).toHaveBeenCalledWith(this.options.port);
+            expect(context.https.listen.mock.calls.length).toBe(1);
+            expect(context.https.listen).toHaveBeenCalledWith(context.options.port);
         });
 
         it('should send `start` event', function(done) {
             // Register event handler on grizzly
-            this.grizzly.on('start', done);
+            context.grizzly.on('start', done);
 
             // Start server
-            this.grizzly.start();
+            context.grizzly.start();
 
             // Simulate HTTPS server start
-            this.https.emit('listening');
+            context.https.emit('listening');
         });
 
         it('should send `error` event', function(done) {
             // Register event handler on grizzly
-            this.grizzly.on('error', done);
+            context.grizzly.on('error', done);
 
             // Start server
-            this.grizzly.start();
+            context.grizzly.start();
 
             // Simulate HTTPS server error
-            this.https.emit('error');
+            context.https.emit('error');
         });
 
         it('should send `stop` event', function(done) {
             // Register event handler on grizzly
-            this.grizzly.on('stop', done);
+            context.grizzly.on('stop', done);
 
             // Start server
-            this.grizzly.start();
+            context.grizzly.start();
 
             // Stop server
-            this.https.emit('close');
+            context.https.emit('close');
         });
     });
 
     describe('stubs', function() {
+        var context = {}
         beforeEach(function() {
-            this.options = {
+            context.options = {
                 key: __dirname + '/../../../cert/server.key',
                 cert: __dirname + '/../../../cert/server.crt',
                 port: 27001,
@@ -107,19 +109,19 @@ describe('grizzly', function() {
                 stub: function () {}
             };
 
-            spyOn(this.options, 'stub');
+            jest.spyOn(context.options, 'stub').mockImplementation(function() {});
 
-            this.https = https.createServer({
-                cert: fs.readFileSync(this.options.cert),
-                key: fs.readFileSync(this.options.key)
+            context.https = https.createServer({
+                cert: fs.readFileSync(context.options.cert),
+                key: fs.readFileSync(context.options.key)
             });
-            this.grizzly = new Grizzly(this.options);
+            context.grizzly = new Grizzly(context.options);
         });
 
         it('should use stubs when provided', function() {
-            this.grizzly.start();
-            expect(this.options.stub).toHaveBeenCalled();
-            this.grizzly.stop();
+            context.grizzly.start();
+            expect(context.options.stub).toHaveBeenCalled();
+            context.grizzly.stop();
         });
     });
 });

@@ -1,4 +1,4 @@
-// Copyright (C) 2007-2014, GoodData(R) Corporation.
+// Copyright (C) 2007-2020, GoodData(R) Corporation.
 var Grizzly = require('../lib/grizzly');
 var defaults = require('lodash.defaults');
 

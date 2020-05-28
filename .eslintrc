@@ -1,8 +1,12 @@
 {
   "env": {
-    "jasmine": true,
+    "jest": true,
     "node": true
   },
-  "plugins": ["jasmine"],
-  "extends": "eslint:recommended"
+  "plugins": [
+    "jest"
+  ],
+  "extends": [
+    "eslint:recommended"
+  ]
 }
