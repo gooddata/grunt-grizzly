@@ -29,22 +29,22 @@
   },
   "main": "lib/grizzly.js",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 8.0.0"
   },
   "dependencies": {
-    "chalk": "4.0.0",
-    "cli-table3": "^0.6.0",
-    "express": "4.17.1",
-    "express-redirect": "1.2.2",
-    "http-proxy": "1.18.1",
-    "lodash.defaults": "4.2.0",
-    "optimist": "0.6.1"
+    "chalk": "^2.4.2",
+    "cli-table3": "^0.5.1",
+    "express": "^4.17.1",
+    "express-redirect": "^1.2.2",
+    "http-proxy": "^1.18.1",
+    "lodash.defaults": "^4.2.0",
+    "optimist": "^0.6.1"
   },
   "devDependencies": {
-    "eslint": "^7.1.0",
-    "eslint-plugin-jest": "^23.13.2",
-    "grunt": "1.1.0",
-    "jest": "^26.0.1"
+    "eslint": "^6.8.0",
+    "eslint-plugin-jest": "^22.21.0",
+    "grunt": "1.0.4",
+    "jest": "^25.5.4"
   },
   "peerDependencies": {
     "grunt": "0.4.0 - 1"
