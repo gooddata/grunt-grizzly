@@ -21,7 +21,8 @@
     "logo.txt"
   ],
   "scripts": {
-    "test": "grunt validate test"
+    "test": "yarn validate && jest",
+    "validate": "eslint --ext=js,jsx,ts,tsx ./"
   },
   "bin": {
     "grizzly": "./bin/grizzly.js"
@@ -31,20 +32,19 @@
     "node": ">= 0.8.0"
   },
   "dependencies": {
-    "chalk": "1.1.3",
-    "cli-table2": "0.2.0",
-    "express": "4.14.1",
+    "chalk": "4.0.0",
+    "cli-table3": "^0.6.0",
+    "express": "4.17.1",
     "express-redirect": "1.2.2",
-    "http-proxy": "1.16.2",
+    "http-proxy": "1.18.1",
     "lodash.defaults": "4.2.0",
     "optimist": "0.6.1"
   },
   "devDependencies": {
-    "eslint-plugin-jasmine": "2.2.0",
-    "grunt": "1.0.1",
-    "grunt-jasmine-node": "0.3.1",
-    "gruntify-eslint": "3.1.0",
-    "jasmine-node": "1.14.5"
+    "eslint": "^7.1.0",
+    "eslint-plugin-jest": "^23.13.2",
+    "grunt": "1.1.0",
+    "jest": "^26.0.1"
   },
   "peerDependencies": {
     "grunt": "0.4.0 - 1"
