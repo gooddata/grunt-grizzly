@@ -1,1 +1,2 @@
-sonar.sources=lib,test
+sonar.sources=.
+sonar.exclusions=
