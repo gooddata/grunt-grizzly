@@ -18,7 +18,8 @@
     "lib",
     "tasks",
     "icon.png",
-    "logo.txt"
+    "logo.txt",
+    "NOTICE.txt"
   ],
   "scripts": {
     "test": "yarn validate && jest",
