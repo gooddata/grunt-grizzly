@@ -90,3 +90,10 @@ to your gruntfile.
 
 There are no integration tests so far. Unit tests are stored under `test/unit/cases`
 and can be run with `grunt test`. Jasmine is used.
+
+## Release
+
+The release needs to be done via [npm trusted publishing](https://docs.npmjs.com/trusted-publishers). Set it up if needed.
+See `mock-js` for the reference implementation and consult the frontend shared credentials guideline.
+
+**Note:** Before the setup, make sure to upgrade Node.js to meet the minimum npm version requirements of trusted publishing.
